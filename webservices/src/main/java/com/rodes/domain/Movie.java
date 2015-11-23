@@ -1,35 +1,44 @@
 package com.rodes.domain;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
 
-@NodeEntity(label="Film")
+@NodeEntity
 public class Movie {
 
 	@GraphId
-	private Long id;
-	
-	@Property(name="title")
-	private String name;
-	
+	Long id;
+
+	String title;
+
+	int released;
+	String tagline;
+
+	@Relationship(type = "ACTED_IN", direction = Relationship.INCOMING)
+	List<Role> roles;
+
+	// end::movie[]
+
 	public Movie() {
-		
 	}
 
-	public Long getId() {
-		return id;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public int getReleased() {
+		return released;
 	}
 
-	public String getName() {
-		return name;
+	public String getTagline() {
+		return tagline;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public Collection<Role> getRoles() {
+		return roles;
 	}
 }
