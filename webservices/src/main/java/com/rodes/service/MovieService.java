@@ -9,7 +9,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.rodes.domain.Movie;
 import com.rodes.repository.MovieRepository;
@@ -57,4 +56,5 @@ public class MovieService {
 	public Collection<Movie> findByTitleContaining(String title) {
 		return this.repository.findByTitleContaining(title);
 	}
+	
 }

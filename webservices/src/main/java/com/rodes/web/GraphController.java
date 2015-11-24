@@ -9,13 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rodes.domain.Movie;
+import com.rodes.domain.Person;
 import com.rodes.service.MovieService;
+import com.rodes.service.PersonService;
 
 @RestController
 public class GraphController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	private PersonService personService;
 	
 	@RequestMapping("/graph")
 	public Map<String, Object> graph(@RequestParam(value = "limit", required = false) Integer limit) {
@@ -25,5 +29,10 @@ public class GraphController {
 	@RequestMapping("/movies")
 	public Collection<Movie> findByTitleContaining(@RequestParam(value = "title", required = true) String title) {
 		return movieService.findByTitleContaining(title);
+	}
+	
+	@RequestMapping("/actors")
+	public Collection<Person> findByNameContaining(@RequestParam(value = "name", required = true) String name) {
+		return personService.findByNameContaining(name);
 	}
 }
