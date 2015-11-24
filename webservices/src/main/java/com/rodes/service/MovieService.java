@@ -19,12 +19,7 @@ public class MovieService {
 
 	@Autowired
 	private MovieRepository repository;
-
-	@Transactional(readOnly = true)
-	public Iterable<Movie> findAllMovies() {
-		return repository.findAll();
-	}
-
+	
 	private Map<String, Object> toD3Format(Iterator<Map<String, Object>> result) {
 		List<Map<String, Object>> nodes = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> rels = new ArrayList<Map<String, Object>>();
@@ -59,4 +54,7 @@ public class MovieService {
 		return toD3Format(result);
 	}
 
+	public Collection<Movie> findByTitleContaining(String title) {
+		return this.repository.findByTitleContaining(title);
+	}
 }
