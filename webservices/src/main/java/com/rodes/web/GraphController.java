@@ -19,6 +19,7 @@ public class GraphController {
 	@Autowired
 	private MovieService movieService;
 	
+	@Autowired
 	private PersonService personService;
 	
 	@RequestMapping("/graph")
