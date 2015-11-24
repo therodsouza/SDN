@@ -36,4 +36,9 @@ public class GraphController {
 	public Collection<Person> findByNameContaining(@RequestParam(value = "name", required = true) String name) {
 		return personService.findByNameContaining(name);
 	}
+	
+	@RequestMapping("/actor")
+	public Person findByName(@RequestParam(value = "name", required = true) String name) {
+		return personService.findByName(name);
+	}
 }

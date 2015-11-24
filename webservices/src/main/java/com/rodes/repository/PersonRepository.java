@@ -10,6 +10,8 @@ import com.rodes.domain.Person;
 
 public interface PersonRepository extends GraphRepository<Person> {
 
+	Person findByName(String name);
+	
 	@Query("MATCH (p:Person) WHERE p.name =~ ('(?i).*'+{name}+'.*')  RETURN p")
 	Collection<Person> findByNameContaining(@Param("name") String name);
 	

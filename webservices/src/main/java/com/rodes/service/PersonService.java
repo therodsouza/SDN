@@ -14,6 +14,10 @@ public class PersonService {
 	@Autowired
 	private PersonRepository repository;
 	
+	public Person findByName(String name) {
+		return this.repository.findByName(name);
+	}
+	
 	public Collection<Person> findByNameContaining(String name) {
 		return this.repository.findByNameContaining(name);
 	}
